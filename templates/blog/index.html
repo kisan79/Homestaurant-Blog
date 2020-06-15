@@ -1,0 +1,198 @@
+<!--site Index Page Here-->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock title %}
+{% block style-element %}
+    <style>
+        .alert,
+        #adminLoginModal{
+            font-family: Arial;
+        }
+    </style>
+{% endblock %}
+
+<!--Section-1 start Here-->
+{% block common %}
+    <header>
+    {% include 'blog/navbar.html' %}
+    <!--Modal Dialog For ADMIN-LOGIN-->
+    <div class="modal fade" id="adminLoginModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Admin Login</h2>
+                    <button class="close" data-dismiss="modal">X</button>
+                </div>
+              <form action="{% url 'admin_login_check' %}" method="post">
+                  {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                            {{ form.as_p }}
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success">LOGIN</button>
+                        <button type="reset" class="btn btn-danger">RESET</button>
+                    </div>
+                </div>
+              </form>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Banner-->
+    <div class='banner-center text-center'>
+            <!--Only For Invalid Admin login-->
+    {% if messages %}
+        <div class="row">
+            <div class="col-sm-12 ">
+            {% for msg in messages %}
+                <div class="alert alert-danger alert-dismissible">
+                    <button class="close" type="button" data-dismiss="alert">X</button>
+                    <h1 class="alert-heading">INVALID CREDENTIALS</h1>
+                    <p {% if msg.tag == 'error' %}class="alert alert-danger"{% endif %} >{{ msg }}</p>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    
+    {% endif %}
+            <h1 class='display-2'><strong>Home Restaurant Dishes</strong></h1>
+            <div class='banner-underline'></div>
+            <a href="#dishes">Explore</a>
+        </div>
+    </header>
+{% endblock common %}
+
+<!--Section-1 end Here-->
+
+    <!--Skill Section-2 start Here-->
+    {% block section-2 %}
+        <section id='skill' class='container-fluid text-center'>
+        <!--title-->
+        <div class="title">
+            <h1 class='display-4'>Show Your Skills</h1>
+            <div class='text-underline'></div>
+            <p class='text-muted'>We offer All Types Of Dishes</p>
+        </div>
+        <!--title End-->
+        <!--Row Start-->
+        <div class='row'>
+            <div class='col-sm-4'>
+                <i class='fa fa-coffee display-3'></i>
+                <h2>Quality</h2>
+                <p class='text-muted'>Many commercially prepared foods are high in fat, salt, and sugar.
+                    When we prepare our own food, we know exactly which ingredients and how much of each are going into
+                    our food.
+                    It might seem like grabbing something to eat at the local supermarket or driving to get take-out at
+                    the closest restaurant might be a quick solution when you’re in a hurry
+                </p>
+                <a class='btn  btn-block'>Learn More</a>
+            </div>
+            <div class='col-sm-4'>
+                <i class='fa fa-utensils display-3'></i>
+                <h2>Innovation</h2>
+                <p class='text-muted'>It might seem like grabbing something to eat at the local supermarket or driving
+                    to get take-out at the closest restaurant might be a quick solution when you’re in a hurry. In
+                    reality, many times it can be much faster to cook something at home, especially when you plan ahead.
+                </p>
+                <a class='btn  btn-block'>Learn More</a>
+            </div>
+
+            <div class='col-sm-4'>
+                <i class='fa fa-bolt display-3'></i>
+                <h2>Energy</h2>
+                <p class='text-muted'> There are so many meals that can be made in less than 30 minutes. And if you
+                    choose a more complex recipe, you can always cook in bulk and eat the surplus later in the week or
+                    freeze it.
+                    Preparing your food at home can be especially beneficial if you or a family member has a food
+                    allergy. Because you are in control in your own kitchen, you can reduce the risk of an allergic
+                    reaction.
+                </p>
+                <a class='btn btn-block'>Learn More</a>
+            </div>
+        </div>
+        <!--Row End-->
+    </section>
+    {% endblock section-2 %}
+    <!--Skill Section-2 end Here-->
+
+
+
+    <!--About Section-3 start Here-->
+    {% block section-3 %}
+        <section id="about" class='container-fluid text-center'>
+        <div class='row'>
+            <div class='col-sm-4 text-center box'>
+                <div class="title">
+                    <h1 class='display-4'>About</h1>
+                    <div class='text-underline'></div>
+                    <p class='text-muted'>
+                        HOME+RESTAURANT=HOMESTAURANT🍜🏡<br>
+                        This page's contents are referred from culinary resources and presented directly from our home
+                        kitchens.👩‍🍳🏡🍲.Many commercially prepared foods are high in fat, salt, and sugar. When we
+                        prepare our own food, we know exactly which ingredients and how much of each are going into our
+                        food.
+                    </p>
+                </div>
+            </div>
+            <div class='col-sm-8 pic'></div>
+        </div>
+    </section>
+    {% endblock section-3 %}
+    <!--About Section-3 end Here-->
+
+
+
+    <!--Card Style Author Section-4 start Here-->
+    {% block section-4 %}
+        <section id='author' class='container-fluid text-center'>
+        <!--title-->
+        <div class="title">
+            <h1 class='display-4'>Meet The Homestaurant Team</h1>
+            <div class='text-underline'></div>
+        </div>
+        <!--title End-->
+        <!--cards-->
+        <div class='card-deck'>
+            <!--card-1-->
+            <div class='card'>
+                <img src="{% static 'images/author/bhatru.jpeg' %}" class='card-img-top author-img' alt="Bhatruhari Behera photo">
+                <div class='card-body'>
+                    <h5 class='card-title text-danger'><strong>Mr. Bhatruhari Behera</strong></h5>
+                    <p class='card-text'>Mr. Bhatruhari has been working on various types of homemade dishes. He has a BSc. degree with Zoology Honours.Cooking and Blogging are his passions.</p>
+                </div>
+                <div class='card-footer'>
+                    <a href="https://www.facebook.com/bhatruhari.behera.12" target="_blank" class='card-text btn btn-block btn-outline-primary'>More about Bhatruhari</a>
+                </div>
+            </div>
+            <!--card-2-->
+            <div class='card'>
+                <img src="{% static 'images/author/ipsa.jpg' %}" class='card-img-top author-img' alt="Ipsa Mohapatra photo">
+                <div class='card-body'>
+                    <h5 class='card-title text-danger'><strong>Miss Ipsa Mohapatra</strong></h5>
+                    <p class='card-text'>Miss Ipsa has been working as a blogger in various fields and also composes many contents in various websites. She has her postgraduation in Masters Of Computer Application. </p>
+                </div>
+                <div class='card-footer'>
+                    <a href="https://www.facebook.com/ipsa.mohapatra.79" target="_blank" class='card-text btn btn-block btn-outline-primary'>More about Ipsa</a>
+                </div>
+            </div>
+            <!--card-3-->
+            <div class='card'>
+                <img src="{% static 'images/author/kisan.jpeg' %}" class='card-img-top author-img' alt="Kisan Kumar photo">
+                <div class='card-body'>
+                    <h5 class='card-title text-primary text-danger'><strong>Mr. Kisan Kumar Behera</strong></h5>
+                    <p class='card-text'>Mr. Kisan has been working in different roles in IT.He has a BTech. degree in Computer Science and enjoys building things using open source technologies</p>
+                </div>
+                <div class='card-footer'>
+                    <a href="https://www.facebook.com/skumarkisan" target="_blank" class='card-text btn btn-block btn-outline-primary'>More about Kisan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock section-4 %}
+    <!--Card Style Author Section-4 end Here-->

@@ -1,0 +1,169 @@
+/* orange #F15025 */
+
+body{
+    font-family: 'Indie Flower', cursive;
+}
+/* navbar */
+.tagline{
+    font-size:0.7em;
+    margin-left: 0.5em;
+    padding-left: 1em;
+    font-style: normal;
+    color: rgba(235, 47, 47, 0.829);
+}
+.transparent{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.navbar-toggler-icon{
+    padding: 25px;
+    background-color: #F15025;
+    border: 5px solid black;
+}
+.navbar-brand{
+    display: flex;
+    flex-flow: column;
+    padding: 0;
+    margin: 0;
+}
+.navbar-brand,
+.nav-link{
+    color:#F15025!important;
+    font-size: 30px;
+    margin-right: 1em;
+    font-style: italic;
+    font-weight: bold;
+}
+.navbar-brand:hover{
+    color: whitesmoke!important;
+    font-size: 29px;
+}
+.tagline:hover{
+    color: dodgerblue!important;
+}
+.nav-link:hover{
+    color: whitesmoke!important;
+    font-size: 32px;
+    margin-right: 1em;
+}
+header{
+    height: 100%;
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    justify-content: center;
+    align-items: center;
+}
+.banner-center{
+    display: flex;
+    flex-flow: column;
+    color: whitesmoke;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.banner-underline{
+    width: 60%;
+    border: 3px solid #F15025;
+    margin: 0 auto  20px;
+}
+.banner-center a{
+    text-decoration: none;
+    border: 2px solid whitesmoke;
+    width: 40%;
+    font-size: 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: whitesmoke;
+    margin: 0px auto;
+    display: inline-block;  
+}
+.banner-center a:focus,
+.banner-center a:hover{
+    background-color: whitesmoke;
+    color: #F15025;
+}
+/* End Of The banner */
+/* title */
+.title{
+    margin: 20px 0;
+    color: black;
+
+}
+.text-underline{
+    border: 2px solid #F15025 ;
+    width: 50%;
+    margin: 0px auto 10px;
+}
+/* End title */
+/* Skill Section */
+#skill{
+    padding: 40px;
+    color: #ee6d03;
+}
+#skill h2{
+    color: black;
+    font-style: italic;
+}
+#skill a{
+    background-color:lightgoldenrodyellow;
+    text-decoration: none;
+    color:#F15025;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+#skill a:hover{
+    background-color: #F15025;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 20px;
+    
+}
+/* End Of Skill Section */
+
+/* About Section */
+#about{
+    background-color: #2D3142;
+    margin-bottom: 0;
+}
+#about .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+#about .pic{
+    height: 600px;
+    background-image: url('../images/about.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 600px solid transparent;
+    border-left: 90px solid #2D3142;
+}
+/* About Section End*/
+
+/* Author Card Section */
+.card-deck{
+    padding:2%;
+}
+#author{
+    background-color:#2D3142;
+}
+/* Footer Section */
+#footer{
+    padding: 40px;
+    color: whitesmoke;
+    background-color: #2D3142;
+}
+.footer-icons{
+    font-size: 60px;
+    padding-top: 40px;
+}
+.footer-icons a{
+    color: deepskyblue;
+    text-decoration: none;
+}

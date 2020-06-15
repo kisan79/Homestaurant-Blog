@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Homestaurant{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon_io/site.webmanifest' %}">
+    <!--Bootstrap CSS-->
+    <link rel='stylesheet' href="{% static 'css/bootstrap.css' %}">
+    <!--Font Awesome CSS-->
+    <link rel='stylesheet' href="{% static 'css/all.min.css' %}">
+    <!--Google Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" >
+    <!--Our CSS-->
+    <link  rel='stylesheet' href="{% static 'css/main.css' %}">
+    {% block style-element %}
+        <style>
+        </style>
+    {% endblock style-element %}
+
+</head>
+
+<body>
+
+{% block common %}
+    <!--Header Section-1 Start Here-->
+        <!--Navbar -->
+        <!--Navbar end-->
+
+    <!--Header Section-1 End Here-->
+{% endblock common %}
+
+
+    <!--Section-2 start Here-->
+    {% block section-2 %}
+
+    {% endblock section-2 %}
+    <!--Section-2 end Here-->
+
+
+
+    <!--Section-3 start Here-->
+    {% block section-3 %}
+
+    {% endblock section-3 %}
+    <!--Section-3 end Here-->
+
+
+
+    <!--Section-4 start Here-->
+    {% block section-4 %}
+
+    {% endblock section-4 %}
+    <!--Section-4 end Here-->
+
+
+
+    <!--Footer Section-5 Start Here-->
+    <section id='footer' class='container-fluid text-center'>
+        <!--title-->
+        <div class="title">
+            <h1 class='display-4'>Contact Us</h1>
+            <div class='text-underline'></div>
+        </div>
+        <!--title End-->
+        <h1><strong>You can contact us </strong></h1>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/homestaurant/" target='_blank'><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/_homestaurant_/" target="_blank"><i class='fab fa-instagram'></i></a>
+            <a href="mailto:homestaurant2020@gmail.com" target="_blank"><i class="fas fa-envelope-square"></i></a>
+            <a href="tel:+919437405213"><i class='fa fa-phone'></i></a>
+        </div>
+        <div class="copyrights">
+            <h3><i>&copy; copyrights 2020-2021</i></h3>
+            <h4>| By <strong style="color: #F15025;">Bhatruhari Behera and Ipsa Mohapatra</strong> |</h4>
+            <h5>| Developed By <strong style="color: #F15025;">
+            <a href='https://www.instagram.com/krishu_kisan/' class='btn btn-outline-info'>Krishu_Kisan</a>
+            </strong> |</h5>
+        </div>
+    </section>
+    <!--Footer Section-5 end Here-->
+
+
+
+    <!-- jQuery first, then Bootstrap bundle js -->
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}">
+    </script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <!--Font Awesome js-->
+    <script type='text/javascript' src="{% static 'js/all.min.js' %}" ></script>
+
+</body>
+</html>

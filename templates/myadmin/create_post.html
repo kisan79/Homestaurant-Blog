@@ -1,0 +1,113 @@
+<!--Admin Create Blog-Post PAGE-->
+{% extends 'base.html' %}
+{% load static %}
+<!--title start here-->
+{% block title %}ADMIN:Create Post{% endblock title %}
+<!--title end here-->
+{% block style-element %}
+    <style>
+        .formPost{
+            margin-top: 120px;
+            margin-bottom: 50px;
+            background-color:white;
+            opacity: 0.8;
+            font-family: Roboto, sans-serif;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #2D3142;
+            border-radius: 10px;
+        }
+        #head{
+            background-image: url('{% static "images/bg.jpg" %}');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
+{% endblock style-element %}
+
+
+{% block common %}
+
+{% if request.session.status %}
+
+<!--Nav-items Start-->
+    {% include 'myadmin/navbar.html' %}
+<!--Nav-items end-->
+<!--Banner in Header start-->
+    <section id="head">
+        <div class="row">
+            <div class="col-6 mx-lg-auto ">
+                <div class="formPost px-5 py-4">
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <div class="alert alert-{{ msg.tag }} alert-dismissible">
+                            <button class="close text-warning" type="button" data-dismiss="alert">X</button>
+                            <h3 class="alert-heading alert-success"> {{ msg }}</h3>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <h1 class="text-center text-danger"><strong>Create Post</strong></h1>
+                    <form action="{% url 'save_post' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group text-info">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="btn btn-group">
+                            <button type="submit" class="btn btn-success">Publish</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--Banner in Header end-->
+    <!--ADMIN-REGISTER-MODAL-->
+    <div class="modal fade" id="adminRegisterModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title text-info text-center">Admin Registration</h1>
+                    <button class="close" type="button" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'save_admin' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group text-success">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-success">Register</button>
+                            <button type="reset" class="btn btn-outline-danger">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+<!--If Session Is Expired-->
+{% else %}
+    <nav class="navbar navbar-expand-lg fixed-top transparent navbar-light">
+    <div class='navbar-brand'>
+                <a>HOMESTAURANT</a>
+                <label class='tagline'>For Homemade dishes</label>
+            </div>
+    </nav>
+    <!--Banner in Header start-->
+    <div class='banner-center text-center'>
+            <h1 class='display-2 alert-danger'><strong>Your Session Expired</strong></h1>
+            <div class='banner-underline'></div>
+            <p class="alert-danger">Successfully Logged Out...</p>
+            <a class="btn btn-success btn-lg" href="{% url 'home' %}" role="button">Login Again???</a>
+    </div>
+<!--Banner in Header end-->
+{% endif %}
+
+{% endblock common %}

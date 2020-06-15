@@ -1,0 +1,78 @@
+<!--ADMIN Home PAGE-->
+{% extends 'base.html' %}
+
+<!--title start here-->
+{% block title %}ADMIN:Home{% endblock title %}
+<!--title end here-->
+{% block style-element %}
+    <style>
+        #adminRegisterModal{
+            font-family: Roboto, sans-serif;
+        }
+    </style>
+{% endblock style-element %}
+
+
+{% block common %}
+
+{% if request.session.status %}
+
+
+    <header>
+<!--Nav-items Start-->
+    {% include 'myadmin/navbar.html' %}
+<!--Nav-items end-->
+<!--Banner in Header start-->
+    <div class='banner-center text-center'>
+            <h1 class='display-2'><strong>Hello!!!...{{ qs.first_name }}...Keep Blogging!</strong></h1>
+            <div class='banner-underline'></div>
+            <a class="btn btn-success btn-lg" href="{% url 'create_post' %}" role="button">Create Post</a>
+    </div>
+<!--Banner in Header end-->
+    <!--ADMIN-REGISTER-MODAL-->
+    <div class="modal fade" id="adminRegisterModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title text-info text-center">Admin Registration</h1>
+                    <button class="close" type="button" data-dismiss="modal">X</button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'save_admin' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group text-success">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-success">Register</button>
+                            <button type="reset" class="btn btn-outline-danger">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+<!--If Session Is Expired-->
+{% else %}
+    <nav class="navbar navbar-expand-lg fixed-top transparent navbar-light">
+    <div class='navbar-brand'>
+                <a>HOMESTAURANT</a>
+                <label class='tagline'>For Homemade dishes</label>
+            </div>
+    </nav>
+    <!--Banner in Header start-->
+    <div class='banner-center text-center'>
+            <h1 class='display-2 alert-danger'><strong>Your Session Expired</strong></h1>
+            <div class='banner-underline'></div>
+            <p class="alert-danger">Successfully Logged Out...</p>
+            <a class="btn btn-success btn-lg" href="{% url 'home' %}" role="button">Login Again???</a>
+    </div>
+<!--Banner in Header end-->
+{% endif %}
+
+{% endblock common %}
