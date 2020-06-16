@@ -21,7 +21,7 @@ def adminHome(request):
 def adminLogout(request):
     '''Function For Admin Logout'''
     request.session['status']= False
-    return redirect('home')
+    return redirect('blog:sitehome')
 
 def save_admin(request):
     '''Function For Registering New Admins and Save To Admin Model'''

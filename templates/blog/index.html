@@ -16,34 +16,8 @@
 {% block common %}
     <header>
     {% include 'blog/navbar.html' %}
-    <!--Modal Dialog For ADMIN-LOGIN-->
-    <div class="modal fade" id="adminLoginModal">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Admin Login</h2>
-                    <button class="close" data-dismiss="modal">X</button>
-                </div>
-              <form action="{% url 'admin_login_check' %}" method="post">
-                  {% csrf_token %}
-                <div class="modal-body">
-                    <div class="form-group">
-                            {{ form.as_p }}
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-success">LOGIN</button>
-                        <button type="reset" class="btn btn-danger">RESET</button>
-                    </div>
-                </div>
-              </form>
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    <!--Admin Login Modal-->
+    {% include 'blog/adminModal.html' %}
     <!--Banner-->
     <div class='banner-center text-center'>
             <!--Only For Invalid Admin login-->

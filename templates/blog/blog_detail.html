@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <!--Column-2 For Side Bar-->
-            <div class="col-lg-7 offset-lg-1 my-5 d-lg-none" >
+            <div class="col-lg-7 offset-lg-1 my-5 d-lg-none">
                 <div class="side-bar">
                     <h1 class="text-center text-justify text-info ">To Feature Your Post In Our website</h1>
                     <a href="#" class="btn btn-outline-info btn-block">Click Here</a>
@@ -31,8 +31,8 @@
             </div>
             <!--Column-2 For Side Bar End-->
             <!--Column-1 For Blog-Posts Start-->
-            <div class="col-lg-7  offset-lg-1" >
-                {% for post in published_blogs %}
+            <div class="col-lg-7  offset-lg-1">
+
                     <div class="card">
                         <img src="{{ post.pic1.url }}" class="card-img" alt="pic:{{ post.title }}">
                         <div class="card-header">
@@ -47,18 +47,18 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a class="card-link" href="{% url 'blog:detail_post' post.slug %}">Read More</a>
+                            <a class="card-link" href="{% url 'blog:delete_post' post.id %}">Delete</a>
                             <a class="card-link" href="#">Edit</a>
                         </div>
                     </div>
-                {% endfor %}
+
 
             </div>
             <!--End Column-1 For Blog-Posts-->
             <!--Column-2 For Side Bar-->
             <div class="col-lg-3 mx-lg-auto d-lg-flex d-none">
                 <div class="side-bar">
-                    <h1 class="text-center text-justify text-info ">To Feature Your Post In Our website</h1>
+                    <h1 class="text-justify text-info ">To Feature Your Post In Our website</h1>
                     <a href="#" class="btn btn-outline-info btn-block">Click Here</a>
                 </div>
             </div>

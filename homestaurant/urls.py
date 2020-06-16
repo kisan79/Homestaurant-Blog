@@ -24,7 +24,7 @@ from blog import urls as blogUrl
 
 urlpatterns = [
     path('admin/',include(adminUrl)),
-    path('',include(blogUrl)),
+    path('',include(blogUrl),),
 ]
 
 '''For Media Upload '''
