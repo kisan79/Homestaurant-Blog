@@ -1,1 +1,1 @@
-web: gunicorn productProject.wsgi --log-file -
+web: gunicorn homestaurant.wsgi --log-file -
