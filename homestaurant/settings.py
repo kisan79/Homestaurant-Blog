@@ -9,14 +9,11 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
-# import django_heroku
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-STATIC_DIR=os.path.join(BASE_DIR,'static')
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +25,8 @@ SECRET_KEY = '2kuc2dau-@f+9!rwt6h&1%^&72n22_0*=r=@c%&&y+2*3o$u0s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Allow all host hosts/domain names for this site
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -46,13 +44,15 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'homestaurant.urls'
@@ -80,14 +80,18 @@ WSGI_APPLICATION = 'homestaurant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'blog.db'),
+#     }
+# }
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'blog.db'),
+    'default':dj_database_url.config(),
     }
-}
-# import dj_database_url
-# DATABASES={'default':dj_database_url.config(),}
 
 
 # Password validation
@@ -125,15 +129,25 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATIC_DIR=os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS=[
     STATIC_DIR,
 ]
 
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
-# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
-# django_heroku.settings(locals())
+
+
+
+# Activating Django-Heroku
+django_heroku.settings(locals())
