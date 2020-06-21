@@ -22,7 +22,7 @@ def admin_login_check(request):
         return redirect('adminHome')
     except Admin.DoesNotExist:
         messages.error(request,'Wrong Username or Password')
-        return redirect('sitehome')
+        return redirect('blog:sitehome')
 
 
 def blogHome(request):
