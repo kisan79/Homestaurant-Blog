@@ -8,7 +8,7 @@ class Admin(models.Model):
     username=models.CharField(max_length=30,unique=True)
     password=models.CharField(max_length=30)
     email=models.EmailField(unique=True,blank=True)
-    mobile=models.IntegerField(unique=True)
+    mobile=models.BigIntegerField(unique=True)
     first_name=models.CharField(max_length=30)
     last_name=models.CharField(max_length=30)
     photo=models.ImageField(upload_to="admin_photos/",blank=True)

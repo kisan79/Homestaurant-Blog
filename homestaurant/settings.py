@@ -87,6 +87,17 @@ WSGI_APPLICATION = 'homestaurant.wsgi.application'
 #     }
 # }
 
+#For PostgreSQL Database Server
+# DATABASES={
+#     "default":{
+#         "ENGINE":"django.db.backends.postgresql",
+#         "NAME":"blogpost",
+#         "HOST":"localhost",
+#         "USER":os.environ.get('PGUSER'),
+#         "PASSWORD":os.environ.get('PGPASSWORD'),
+#
+#     }
+# }
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES = {
