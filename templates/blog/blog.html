@@ -34,7 +34,9 @@
             <div class="col-lg-7  offset-lg-1" >
                 {% for post in published_blogs %}
                     <div class="card">
-                        <img src="{{ post.pic1.url }}" class="card-img" alt="pic:{{ post.title }}">
+                        {% if post.pic1 %}
+                            <img src="{{ post.pic1.url }}" class="card-img" alt="pic:{{ post.title }}">
+                        {% endif %}
                         <div class="card-header">
                             <label class="card-title font-weight-bold">{{ post.title }}</label>
                             <p class="text-info text-muted">Published By-{{ post.author }} |
